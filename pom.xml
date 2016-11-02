@@ -1,0 +1,102 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <!--
+    To build:
+      mvn clean package
+  -->
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>edu.ucar.ral.web</groupId>
+  <artifactId>wmo-icao-web-validator</artifactId>
+  <packaging>war</packaging>
+  <version>1.0</version>
+  <name>WMO/ICAO Web Validator</name>
+
+  <properties>
+  </properties>
+
+  <repositories>
+  </repositories>
+
+  <dependencies>
+
+    <dependency>
+      <groupId>edu.ucar.ral.xml</groupId>
+      <artifactId>crux</artifactId>
+      <version>1.2</version>
+    </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>3.1.0</version>
+      <scope>provided</scope>
+    </dependency>
+
+  </dependencies>
+  <build>
+    <finalName>wmo-icao-web-validator</finalName>
+    <resources>
+      <resource>
+        <directory>src/main/webapp</directory>
+        <targetPath>META-INF/resources</targetPath>
+      </resource>
+    </resources>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.3.2</version>
+        <inherited>true</inherited>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>2.6</version>
+        <configuration>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+          <finalName>wmo-icao-web-validator-${project.version}</finalName>
+          <archive>
+            <manifest>
+              <mainClass>edu.ucar.ral.web.wmoicaovalidator.Main</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.0.0</version>
+        <configuration>
+            <webResources>
+                <resource>
+                  <!-- Add Elastic Beanstalk configs at the root of the WAR -->
+                    <directory>src/main/ebextensions</directory>
+                    <targetPath>.ebextensions</targetPath>
+                    <filtering>true</filtering>
+                </resource>
+            </webResources>
+        </configuration>
+    </plugin>
+    </plugins>
+  </build>
+</project>

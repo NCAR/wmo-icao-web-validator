@@ -1,0 +1,3 @@
+This file is only here so Git will keep the directory without any checked-in content.
+The hope is that a having this dir will keep the Maven build process from failing when
+it tries to put content in this directory into the WAR file

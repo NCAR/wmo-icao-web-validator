@@ -1,0 +1,565 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="2.5" jmeter="2.10 r1533061">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <intProp name="LoopController.loops">-1</intProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">8</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1476462464000</longProp>
+        <longProp name="ThreadGroup.end_time">1476462464000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request (metar-A3-1)" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#xd;
+&lt;!--&#xd;
+    An example of a METAR.  Original METAR from ICAO Annex 3 Amd 77 Example A3-1:&#xd;
+    &#xd;
+      METAR YUDO 221630Z 24004MPS 0600 R12/1000U DZ FG SCT010 OVC020 17/16 Q1018&#xd;
+      BECMG TL1700 0800 FG BECMG AT1800 9999 NSW&#xd;
+--&gt;&#xd;
+&lt;iwxxm:METAR xmlns:iwxxm=&quot;http://icao.int/iwxxm/2.0&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot;&#xd;
+    xmlns:gml=&quot;http://www.opengis.net/gml/3.2&quot; xmlns:om=&quot;http://www.opengis.net/om/2.0&quot;&#xd;
+    xmlns:metce=&quot;http://def.wmo.int/metce/2013&quot;&#xd;
+    xmlns:sams=&quot;http://www.opengis.net/samplingSpatial/2.0&quot;&#xd;
+    xmlns:aixm=&quot;http://www.aixm.aero/schema/5.1.1&quot;&#xd;
+    xmlns:sf=&quot;http://www.opengis.net/sampling/2.0&quot;&#xd;
+    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&#xd;
+    xsi:schemaLocation=&quot;http://icao.int/iwxxm/2.0 http://schemas.wmo.int/iwxxm/2.0/iwxxm.xsd&#xd;
+    http://def.wmo.int/metce/2013 http://schemas.wmo.int/metce/1.2/metce.xsd&#xd;
+    http://www.opengis.net/samplingSpatial/2.0 http://schemas.opengis.net/samplingSpatial/2.0/spatialSamplingFeature.xsd&quot;&#xd;
+&#xd;
+    gml:id=&quot;metar-YUDO-20120822163000Z&quot;&#xd;
+    permissibleUsage=&quot;OPERATIONAL&quot;&#xd;
+    status=&quot;NORMAL&quot;&#xd;
+    automatedStation=&quot;false&quot;&gt;&#xd;
+&#xd;
+    &lt;iwxxm:observation&gt;&#xd;
+        &lt;om:OM_Observation gml:id=&quot;obs-03839-20120824T12Z&quot;&gt;&#xd;
+            &lt;om:type xlink:href=&quot;http://codes.wmo.int/49-2/observation-type/IWXXM/2.0/MeteorologicalAerodromeObservation&quot;/&gt;&#xd;
+            &lt;!-- time at which the observation actually occured --&gt;&#xd;
+            &lt;om:phenomenonTime&gt;&#xd;
+                &lt;gml:TimeInstant gml:id=&quot;ti-201208221630Z&quot;&gt;&#xd;
+                    &lt;gml:timePosition&gt;2012-08-22T16:30:00Z&lt;/gml:timePosition&gt;&#xd;
+                &lt;/gml:TimeInstant&gt;&#xd;
+            &lt;/om:phenomenonTime&gt;&#xd;
+            &lt;!-- time at which the results of the observation were made available (10-minutes later) --&gt;&#xd;
+            &lt;om:resultTime&gt;&#xd;
+                &lt;gml:TimeInstant gml:id=&quot;ti-201208221640Z&quot;&gt;&#xd;
+                    &lt;gml:timePosition&gt;2012-08-22T16:40:00Z&lt;/gml:timePosition&gt;&#xd;
+                &lt;/gml:TimeInstant&gt;&#xd;
+            &lt;/om:resultTime&gt;&#xd;
+            &lt;om:procedure&gt;&#xd;
+                &lt;metce:Process gml:id=&quot;p-49-2-metar&quot;&gt;&#xd;
+                    &lt;gml:description&gt;WMO No. 49 Volume 2 Meteorological Service for International Air Navigation APPENDIX 3 TECHNICAL SPECIFICATIONS RELATED TO METEOROLOGICAL OBSERVATIONS AND REPORTS&lt;/gml:description&gt;&#xd;
+                &lt;/metce:Process&gt;&#xd;
+            &lt;/om:procedure&gt;&#xd;
+            &lt;om:observedProperty xlink:href=&quot;http://codes.wmo.int/49-2/observable-property/MeteorologicalAerodromeObservation&quot;/&gt;&#xd;
+            &lt;om:featureOfInterest&gt;&#xd;
+                &lt;!-- featureOfInterest type and shape must refer to a point --&gt;&#xd;
+                &lt;sams:SF_SpatialSamplingFeature gml:id=&quot;sampling-point-03839&quot;&gt;&#xd;
+                    &lt;sf:type xlink:href=&quot;http://www.opengis.net/def/samplingFeatureType/OGC-OM/2.0/SF_SamplingPoint&quot;/&gt;&#xd;
+                    &lt;sf:sampledFeature&gt;&#xd;
+                        &lt;!-- The aerodrome at which this observation took place --&gt;&#xd;
+                        &lt;aixm:AirportHeliport gml:id=&quot;aerodrome-YUDO&quot;&gt;&#xd;
+                          &lt;aixm:timeSlice&gt;&#xd;
+                            &lt;aixm:AirportHeliportTimeSlice gml:id=&quot;aerodrome-YUDO-ts&quot;&gt;&#xd;
+                              &lt;gml:validTime/&gt;&#xd;
+                              &lt;aixm:interpretation&gt;BASELINE&lt;/aixm:interpretation&gt;&#xd;
+                              &lt;aixm:designator&gt;YUDO&lt;/aixm:designator&gt;&#xd;
+                              &lt;aixm:name&gt;DONLON/INTERNATIONAL&lt;/aixm:name&gt;&#xd;
+                              &lt;aixm:locationIndicatorICAO&gt;YUDO&lt;/aixm:locationIndicatorICAO&gt;&#xd;
+                            &lt;/aixm:AirportHeliportTimeSlice&gt;&#xd;
+                          &lt;/aixm:timeSlice&gt;&#xd;
+                        &lt;/aixm:AirportHeliport&gt;&#xd;
+                    &lt;/sf:sampledFeature&gt;&#xd;
+                    &lt;sams:shape&gt;&#xd;
+                        &lt;!-- This is where the observation took place, assumed to be representative of the entire aerodrome --&gt;&#xd;
+                        &lt;gml:Point gml:id=&quot;point-5225-3201&quot; srsDimension=&quot;2&quot; srsName=&quot;http://www.opengis.net/def/crs/EPSG/0/4326&quot;&gt;&#xd;
+                            &lt;gml:pos&gt;12.34 -12.34&lt;/gml:pos&gt;&#xd;
+                        &lt;/gml:Point&gt;&#xd;
+                    &lt;/sams:shape&gt;&#xd;
+                &lt;/sams:SF_SpatialSamplingFeature&gt;&#xd;
+            &lt;/om:featureOfInterest&gt;&#xd;
+            &lt;!-- The result of the observation --&gt;&#xd;
+            &lt;om:result&gt;&#xd;
+                &lt;iwxxm:MeteorologicalAerodromeObservationRecord gml:id=&quot;or1&quot; cloudAndVisibilityOK=&quot;false&quot;&gt;&#xd;
+                    &lt;iwxxm:airTemperature uom=&quot;Cel&quot;&gt;17.0&lt;/iwxxm:airTemperature&gt;&#xd;
+                    &lt;iwxxm:dewpointTemperature uom=&quot;Cel&quot;&gt;16.0&lt;/iwxxm:dewpointTemperature&gt;&#xd;
+                    &lt;iwxxm:qnh uom=&quot;hPa&quot;&gt;1018&lt;/iwxxm:qnh&gt;&#xd;
+                    &lt;iwxxm:surfaceWind&gt;&#xd;
+                        &lt;iwxxm:AerodromeSurfaceWind variableWindDirection=&quot;false&quot;&gt;&#xd;
+                            &lt;iwxxm:meanWindDirection uom=&quot;deg&quot;&gt;240&lt;/iwxxm:meanWindDirection&gt;&#xd;
+                            &lt;iwxxm:meanWindSpeed uom=&quot;m/s&quot;&gt;4.0&lt;/iwxxm:meanWindSpeed&gt;&#xd;
+                        &lt;/iwxxm:AerodromeSurfaceWind&gt;&#xd;
+                    &lt;/iwxxm:surfaceWind&gt;&#xd;
+                    &lt;iwxxm:visibility&gt;&#xd;
+                        &lt;iwxxm:AerodromeHorizontalVisibility&gt;&#xd;
+                            &lt;iwxxm:prevailingVisibility uom=&quot;m&quot;&gt;600&lt;/iwxxm:prevailingVisibility&gt;&#xd;
+                        &lt;/iwxxm:AerodromeHorizontalVisibility&gt;&#xd;
+                    &lt;/iwxxm:visibility&gt;&#xd;
+                    &lt;iwxxm:rvr&gt;&#xd;
+                        &lt;iwxxm:AerodromeRunwayVisualRange pastTendency=&quot;UPWARD&quot;&gt;&#xd;
+                            &lt;iwxxm:runway&gt;&#xd;
+                                &lt;aixm:RunwayDirection gml:id=&quot;YUDO-runwaydir-12&quot;&gt;&#xd;
+                                    &lt;aixm:timeSlice&gt;&#xd;
+                                        &lt;aixm:RunwayDirectionTimeSlice gml:id=&quot;YUDO-runwaydir-12-ts&quot;&gt;&#xd;
+                                            &lt;gml:validTime/&gt;&#xd;
+                                            &lt;aixm:interpretation&gt;BASELINE&lt;/aixm:interpretation&gt;&#xd;
+                                            &lt;aixm:designator&gt;12&lt;/aixm:designator&gt;&#xd;
+                                        &lt;/aixm:RunwayDirectionTimeSlice&gt;&#xd;
+                                    &lt;/aixm:timeSlice&gt;&#xd;
+                                &lt;/aixm:RunwayDirection&gt;&#xd;
+                            &lt;/iwxxm:runway&gt;&#xd;
+                            &lt;iwxxm:meanRVR uom=&quot;m&quot;&gt;1000&lt;/iwxxm:meanRVR&gt;&#xd;
+                        &lt;/iwxxm:AerodromeRunwayVisualRange&gt;&#xd;
+                    &lt;/iwxxm:rvr&gt;&#xd;
+                    &lt;iwxxm:presentWeather xlink:href=&quot;http://codes.wmo.int/306/4678/DZ&quot;/&gt;&#xd;
+                    &lt;iwxxm:presentWeather xlink:href=&quot;http://codes.wmo.int/306/4678/FG&quot;/&gt;&#xd;
+                    &lt;iwxxm:cloud&gt;&#xd;
+                        &lt;iwxxm:AerodromeObservedClouds&gt;&#xd;
+                            &lt;iwxxm:layer&gt;&#xd;
+                                &lt;iwxxm:CloudLayer&gt;&#xd;
+                                    &lt;iwxxm:amount xlink:href=&quot;http://codes.wmo.int/bufr4/codeflag/0-20-008/2&quot;/&gt;&#xd;
+                                    &lt;iwxxm:base uom=&quot;[ft_i]&quot;&gt;1000&lt;/iwxxm:base&gt;&#xd;
+                                &lt;/iwxxm:CloudLayer&gt;&#xd;
+                            &lt;/iwxxm:layer&gt;&#xd;
+                            &lt;iwxxm:layer&gt;&#xd;
+                                &lt;iwxxm:CloudLayer&gt;&#xd;
+                                    &lt;iwxxm:amount xlink:href=&quot;http://codes.wmo.int/bufr4/codeflag/0-20-008/4&quot;/&gt;&#xd;
+                                    &lt;iwxxm:base uom=&quot;[ft_i]&quot;&gt;2000&lt;/iwxxm:base&gt;&#xd;
+                                &lt;/iwxxm:CloudLayer&gt;&#xd;
+                            &lt;/iwxxm:layer&gt;&#xd;
+                        &lt;/iwxxm:AerodromeObservedClouds&gt;&#xd;
+                    &lt;/iwxxm:cloud&gt;&#xd;
+                &lt;/iwxxm:MeteorologicalAerodromeObservationRecord&gt;&#xd;
+            &lt;/om:result&gt;&#xd;
+        &lt;/om:OM_Observation&gt;&#xd;
+    &lt;/iwxxm:observation&gt;&#xd;
+    &lt;iwxxm:trendForecast&gt;&#xd;
+        &lt;om:OM_Observation gml:id=&quot;trend-fcst-1&quot;&gt;&#xd;
+            &lt;om:type xlink:href=&quot;http://codes.wmo.int/49-2/observation-type/IWXXM/2.0/MeteorologicalAerodromeTrendForecast&quot;/&gt;&#xd;
+            &lt;!-- time at which the forecast conditions actually occur --&gt;&#xd;
+            &lt;om:phenomenonTime&gt;&#xd;
+                &lt;gml:TimePeriod gml:id=&quot;tp-201208221630Z-201208221700Z&quot;&gt;&#xd;
+                    &lt;gml:beginPosition&gt;2012-08-22T16:30:00Z&lt;/gml:beginPosition&gt;&#xd;
+                    &lt;gml:endPosition&gt;2012-08-22T17:00:00Z&lt;/gml:endPosition&gt;&#xd;
+                &lt;/gml:TimePeriod&gt;&#xd;
+            &lt;/om:phenomenonTime&gt;&#xd;
+            &lt;!-- time at which the results of the observation were made available --&gt;&#xd;
+            &lt;om:resultTime xlink:href=&quot;#ti-201208221640Z&quot;/&gt;&#xd;
+            &lt;om:procedure xlink:href=&quot;#p-49-2-metar&quot;/&gt;&#xd;
+            &lt;om:observedProperty xlink:href=&quot;http://codes.wmo.int/49-2/observable-property/MeteorologicalAerodromeTrendForecast&quot;/&gt;&#xd;
+            &lt;om:featureOfInterest xlink:href=&quot;#sampling-point-03839&quot;/&gt;&#xd;
+            &lt;om:result&gt;&#xd;
+                &lt;iwxxm:MeteorologicalAerodromeTrendForecastRecord gml:id=&quot;trend-fcst-record-03839-201208221630Z-201208221700Z&quot; changeIndicator=&quot;BECOMING&quot; cloudAndVisibilityOK=&quot;false&quot;&gt;&#xd;
+                    &lt;iwxxm:prevailingVisibility uom=&quot;m&quot;&gt;800&lt;/iwxxm:prevailingVisibility&gt;&#xd;
+                    &lt;iwxxm:forecastWeather xlink:href=&quot;http://codes.wmo.int/306/4678/FG&quot;/&gt;&#xd;
+                &lt;/iwxxm:MeteorologicalAerodromeTrendForecastRecord&gt;&#xd;
+            &lt;/om:result&gt;&#xd;
+        &lt;/om:OM_Observation&gt;&#xd;
+    &lt;/iwxxm:trendForecast&gt;&#xd;
+    &lt;iwxxm:trendForecast&gt;&#xd;
+        &lt;om:OM_Observation gml:id=&quot;trend-fcst-2&quot;&gt;&#xd;
+            &lt;om:type xlink:href=&quot;http://codes.wmo.int/49-2/observation-type/IWXXM/2.0/MeteorologicalAerodromeTrendForecast&quot;/&gt;&#xd;
+            &lt;!-- time at which the forecast conditions actually occur --&gt;&#xd;
+            &lt;om:phenomenonTime&gt;&#xd;
+                &lt;gml:TimePeriod gml:id=&quot;tp-201208221800Z-201208221800Z&quot;&gt;&#xd;
+                    &lt;gml:beginPosition&gt;2012-08-22T18:00:00Z&lt;/gml:beginPosition&gt;&#xd;
+                    &lt;gml:endPosition&gt;2012-08-22T18:00:00Z&lt;/gml:endPosition&gt;&#xd;
+                &lt;/gml:TimePeriod&gt;&#xd;
+            &lt;/om:phenomenonTime&gt;&#xd;
+            &lt;!-- time at which the results of the observation were made available --&gt;&#xd;
+            &lt;om:resultTime xlink:href=&quot;#ti-201208221640Z&quot;/&gt;&#xd;
+            &lt;om:procedure xlink:href=&quot;#p-49-2-metar&quot;/&gt;&#xd;
+            &lt;om:observedProperty xlink:href=&quot;http://codes.wmo.int/49-2/observable-property/MeteorologicalAerodromeTrendForecast&quot;/&gt;&#xd;
+            &lt;om:featureOfInterest xlink:href=&quot;#sampling-point-03839&quot;/&gt;&#xd;
+            &lt;om:result&gt;&#xd;
+                &lt;iwxxm:MeteorologicalAerodromeTrendForecastRecord gml:id=&quot;trend-fcst-record-03839-201208221800Z-201208221900Z&quot; changeIndicator=&quot;BECOMING&quot; cloudAndVisibilityOK=&quot;false&quot;&gt;&#xd;
+                    &lt;iwxxm:prevailingVisibility uom=&quot;m&quot;&gt;10000&lt;/iwxxm:prevailingVisibility&gt;&#xd;
+                    &lt;iwxxm:prevailingVisibilityOperator&gt;ABOVE&lt;/iwxxm:prevailingVisibilityOperator&gt;&#xd;
+                    &lt;iwxxm:forecastWeather nilReason=&quot;http://codes.wmo.int/common/nil/nothingOfOperationalSignificance&quot;/&gt;&#xd;
+                &lt;/iwxxm:MeteorologicalAerodromeTrendForecastRecord&gt;&#xd;
+            &lt;/om:result&gt;&#xd;
+        &lt;/om:OM_Observation&gt;&#xd;
+    &lt;/iwxxm:trendForecast&gt;&#xd;
+&lt;/iwxxm:METAR&gt;</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/validate</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request (sigmet-TS)" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#xd;
+&lt;!--&#xd;
+    An example of a SIGMET.  Original SIGMET from ICAO Annex 3 Amd 77 Example A6-1a:&#xd;
+    &#xd;
+      YUDD SIGMET 2 VALID 101200/101600 YUSO –&#xd;
+      YUDD SHANLON FIR/UIR OBSC TS FCST S OF N54 AND E OF W012 TOP FL390 MOV E 20KT WKN&#xd;
+--&gt;&#xd;
+&lt;iwxxm:SIGMET xmlns:iwxxm=&quot;http://icao.int/iwxxm/2.0&quot;&#xd;
+    xmlns:aixm=&quot;http://www.aixm.aero/schema/5.1.1&quot; xmlns:metce=&quot;http://def.wmo.int/metce/2013&quot;&#xd;
+    xmlns:om=&quot;http://www.opengis.net/om/2.0&quot; xmlns:sf=&quot;http://www.opengis.net/sampling/2.0&quot;&#xd;
+    xmlns:sams=&quot;http://www.opengis.net/samplingSpatial/2.0&quot;&#xd;
+    xmlns:gml=&quot;http://www.opengis.net/gml/3.2&quot; xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot;&#xd;
+    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&#xd;
+    xsi:schemaLocation=&quot;http://icao.int/iwxxm/2.0 http://schemas.wmo.int/iwxxm/2.0/iwxxm.xsd&#xd;
+    http://def.wmo.int/metce/2013 http://schemas.wmo.int/metce/1.2/metce.xsd&#xd;
+    http://www.opengis.net/samplingSpatial/2.0 http://schemas.opengis.net/samplingSpatial/2.0/spatialSamplingFeature.xsd&quot;&#xd;
+&#xd;
+    gml:id=&quot;sigmet-YUDD-201208101200Z&quot;&#xd;
+    permissibleUsage=&quot;OPERATIONAL&quot;&#xd;
+    status=&quot;NORMAL&quot;&gt;&#xd;
+&#xd;
+    &lt;iwxxm:issuingAirTrafficServicesUnit&gt;&#xd;
+        &lt;aixm:Unit gml:id=&quot;fic-YUDD&quot;&gt;&#xd;
+            &lt;aixm:timeSlice&gt;&#xd;
+                &lt;aixm:UnitTimeSlice gml:id=&quot;fic-YUDD-ts&quot;&gt;&#xd;
+                    &lt;gml:validTime/&gt;&#xd;
+                    &lt;aixm:interpretation&gt;BASELINE&lt;/aixm:interpretation&gt;&#xd;
+                    &lt;aixm:name&gt;YUDD FIC&lt;/aixm:name&gt;&#xd;
+                    &lt;aixm:type&gt;FIC&lt;/aixm:type&gt;&#xd;
+                    &lt;aixm:designator&gt;YUDD&lt;/aixm:designator&gt;&#xd;
+                &lt;/aixm:UnitTimeSlice&gt;&#xd;
+            &lt;/aixm:timeSlice&gt;&#xd;
+        &lt;/aixm:Unit&gt;&#xd;
+    &lt;/iwxxm:issuingAirTrafficServicesUnit&gt;&#xd;
+    &lt;iwxxm:originatingMeteorologicalWatchOffice&gt;&#xd;
+        &lt;aixm:Unit gml:id=&quot;wmo-YUSO&quot;&gt;&#xd;
+            &lt;aixm:timeSlice&gt;&#xd;
+                &lt;aixm:UnitTimeSlice gml:id=&quot;mwo-YUSO-ts&quot;&gt;&#xd;
+                    &lt;gml:validTime/&gt;&#xd;
+                    &lt;aixm:interpretation&gt;BASELINE&lt;/aixm:interpretation&gt;&#xd;
+                    &lt;aixm:name&gt;YUSO MWO&lt;/aixm:name&gt;&#xd;
+                    &lt;aixm:type&gt;MWO&lt;/aixm:type&gt;&#xd;
+                    &lt;aixm:designator&gt;YUSO&lt;/aixm:designator&gt;&#xd;
+                &lt;/aixm:UnitTimeSlice&gt;&#xd;
+            &lt;/aixm:timeSlice&gt;&#xd;
+        &lt;/aixm:Unit&gt;&#xd;
+    &lt;/iwxxm:originatingMeteorologicalWatchOffice&gt;&#xd;
+&#xd;
+    &lt;iwxxm:sequenceNumber&gt;2&lt;/iwxxm:sequenceNumber&gt;&#xd;
+&#xd;
+    &lt;!-- Valid period for this report --&gt;&#xd;
+    &lt;iwxxm:validPeriod&gt;&#xd;
+        &lt;gml:TimePeriod gml:id=&quot;tp-20120810T1200Z-20120810T1600Z&quot;&gt;&#xd;
+            &lt;gml:beginPosition&gt;2012-08-10T12:00:00Z&lt;/gml:beginPosition&gt;&#xd;
+            &lt;gml:endPosition&gt;2012-08-10T16:00:00Z&lt;/gml:endPosition&gt;&#xd;
+        &lt;/gml:TimePeriod&gt;&#xd;
+    &lt;/iwxxm:validPeriod&gt;&#xd;
+&#xd;
+    &lt;!-- The significant meteorological phenomenon are listed in WMO No. 49 C.3.1. sub-clause 1.1.4 --&gt;&#xd;
+    &lt;iwxxm:phenomenon xlink:href=&quot;http://codes.wmo.int/49-2/SigWxPhenomena/OBSC_TS&quot;/&gt;&#xd;
+&#xd;
+    &lt;!-- FCST S OF N54 AND E OF W012 TOP FL390 MOV E 20KT WKN --&gt;&#xd;
+    &lt;iwxxm:analysis&gt;&#xd;
+        &lt;om:OM_Observation gml:id=&quot;analysis1&quot;&gt;&#xd;
+            &lt;om:type xlink:href=&quot;http://codes.wmo.int/49-2/observation-type/IWXXM/2.0/SIGMETEvolvingConditionAnalysis&quot;/&gt;&#xd;
+            &lt;!-- time of FCST conditions - if missing there is no FCST or OBS time --&gt;&#xd;
+            &lt;om:phenomenonTime nilReason=&quot;missing&quot;/&gt;&#xd;
+&#xd;
+            &lt;!-- time at which the results of the observation were made available --&gt;&#xd;
+            &lt;om:resultTime&gt;&#xd;
+                &lt;gml:TimeInstant gml:id=&quot;ti-201208101200Z&quot;&gt;&#xd;
+                    &lt;gml:timePosition&gt;2012-08-10T12:00:00Z&lt;/gml:timePosition&gt;&#xd;
+                &lt;/gml:TimeInstant&gt;&#xd;
+            &lt;/om:resultTime&gt;&#xd;
+            &lt;!-- The valid period for this observation is the period of the entire SIGMET --&gt;&#xd;
+            &lt;om:validTime xlink:href=&quot;#tp-20120810T1200Z-20120810T1600Z&quot;/&gt;&#xd;
+            &lt;om:procedure&gt;&#xd;
+                &lt;metce:Process gml:id=&quot;p-49-2-sigmet&quot;&gt;&#xd;
+                    &lt;gml:description&gt;WMO No. 49 Volume 2 Meteorological Service for International Air Navigation APPENDIX 6-1 TECHNICAL SPECIFICATIONS RELATED TO SIGMET INFORMATION&lt;/gml:description&gt;&#xd;
+                &lt;/metce:Process&gt;&#xd;
+            &lt;/om:procedure&gt;&#xd;
+            &lt;om:observedProperty xlink:href=&quot;http://codes.wmo.int/49-2/observable-property/SIGMETEvolvingConditionAnalysis&quot;/&gt;&#xd;
+            &lt;!-- featureOfInterest type and shape MUST refer to an SF_SamplingSurface --&gt;&#xd;
+            &lt;om:featureOfInterest&gt;&#xd;
+                &lt;sams:SF_SpatialSamplingFeature gml:id=&quot;sampling-surface-shanlon&quot;&gt;&#xd;
+                    &lt;sf:type xlink:href=&quot;http://www.opengis.net/def/samplingFeatureType/OGC-OM/2.0/SF_SamplingSurface&quot;/&gt;&#xd;
+                    &lt;sf:sampledFeature&gt;&#xd;
+                        &lt;aixm:Airspace gml:id=&quot;fir-YUDD&quot;&gt;&#xd;
+                            &lt;aixm:timeSlice&gt;&#xd;
+                                &lt;aixm:AirspaceTimeSlice gml:id=&quot;fir-YUDD-ts&quot;&gt;&#xd;
+                                    &lt;gml:validTime/&gt;&#xd;
+                                    &lt;aixm:interpretation&gt;BASELINE&lt;/aixm:interpretation&gt;&#xd;
+                                    &lt;aixm:type&gt;OTHER:FIR_UIR&lt;/aixm:type&gt;&#xd;
+                                    &lt;aixm:designator&gt;YUDD&lt;/aixm:designator&gt;&#xd;
+                                    &lt;aixm:name&gt;SHANLON FIR/UIR&lt;/aixm:name&gt;&#xd;
+                                &lt;/aixm:AirspaceTimeSlice&gt;&#xd;
+                            &lt;/aixm:timeSlice&gt;&#xd;
+                        &lt;/aixm:Airspace&gt;&#xd;
+                    &lt;/sf:sampledFeature&gt;&#xd;
+                    &lt;!-- FIR boundary - not typically reported --&gt;&#xd;
+                    &lt;sams:shape nilReason=&quot;withheld&quot;/&gt;&#xd;
+                &lt;/sams:SF_SpatialSamplingFeature&gt;&#xd;
+            &lt;/om:featureOfInterest&gt;&#xd;
+            &lt;om:result&gt;&#xd;
+                &lt;iwxxm:EvolvingMeteorologicalCondition gml:id=&quot;fcst1&quot; intensityChange=&quot;WEAKEN&quot; timeIndicator=&quot;FORECAST&quot;&gt;&#xd;
+                    &lt;iwxxm:directionOfMotion uom=&quot;deg&quot;&gt;90&lt;/iwxxm:directionOfMotion&gt;&#xd;
+                    &lt;!-- This shape describes: S OF N54 AND E OF W012 TOP FL390 --&gt;&#xd;
+                    &lt;iwxxm:geometry&gt;&#xd;
+                        &lt;aixm:AirspaceVolume gml:id=&quot;as1&quot;&gt;&#xd;
+                            &lt;aixm:upperLimit uom=&quot;FL&quot;&gt;390&lt;/aixm:upperLimit&gt;&#xd;
+                            &lt;aixm:upperLimitReference&gt;STD&lt;/aixm:upperLimitReference&gt;&#xd;
+                            &lt;aixm:horizontalProjection&gt;&#xd;
+                                &lt;aixm:Surface gml:id=&quot;sfc1&quot; uomLabels=&quot;deg deg&quot; axisLabels=&quot;Lat Lon&quot; &#xd;
+                                    srsDimension=&quot;2&quot; srsName=&quot;http://www.opengis.net/def/crs/EPSG/0/4326&quot;&gt;&#xd;
+                                    &lt;gml:polygonPatches&gt;&#xd;
+                                        &lt;gml:PolygonPatch&gt;&#xd;
+                                            &lt;gml:exterior&gt;&#xd;
+                                                &lt;gml:LinearRing&gt;&#xd;
+                                                    &lt;!-- bounding polygon clipped to edge of FIR @ 50N and 08W (in clockwise order) --&gt;&#xd;
+                                                    &lt;gml:posList&gt;&#xd;
+                                                        54.0 -12.0 54.0 -8.0 50.0 -8.0 50.0 -12.0 54.0 -12.0&#xd;
+                                                    &lt;/gml:posList&gt;&#xd;
+                                                &lt;/gml:LinearRing&gt;&#xd;
+                                            &lt;/gml:exterior&gt;&#xd;
+                                        &lt;/gml:PolygonPatch&gt;&#xd;
+                                    &lt;/gml:polygonPatches&gt;&#xd;
+                                &lt;/aixm:Surface&gt;&#xd;
+                            &lt;/aixm:horizontalProjection&gt;&#xd;
+                        &lt;/aixm:AirspaceVolume&gt;&#xd;
+                    &lt;/iwxxm:geometry&gt;&#xd;
+                    &lt;iwxxm:speedOfMotion uom=&quot;[kn_i]&quot;&gt;20&lt;/iwxxm:speedOfMotion&gt;&#xd;
+                &lt;/iwxxm:EvolvingMeteorologicalCondition&gt;&#xd;
+            &lt;/om:result&gt;&#xd;
+        &lt;/om:OM_Observation&gt;&#xd;
+    &lt;/iwxxm:analysis&gt;&#xd;
+&#xd;
+&lt;/iwxxm:SIGMET&gt;</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8080</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/validate</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree/>
+      </hashTree>
+      <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>false</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+          </value>
+        </objProp>
+        <objProp>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>false</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <ResultCollector guiclass="GraphVisualizer" testclass="ResultCollector" testname="Graph Results" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>false</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+          </value>
+        </objProp>
+        <objProp>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>false</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>false</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+          </value>
+        </objProp>
+        <objProp>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>false</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

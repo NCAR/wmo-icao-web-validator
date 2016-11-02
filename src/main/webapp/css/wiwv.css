@@ -1,0 +1,9 @@
+.bg-white {
+    background-color: #ffffff !important;
+}
+
+.line-error{
+    background-color: rgba(153, 117, 115, 0.5) !important;
+}
+
+.CodeMirror pre.CodeMirror-placeholder { color: #999; }
