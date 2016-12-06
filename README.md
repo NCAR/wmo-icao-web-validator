@@ -21,8 +21,11 @@ Java system property ("-DSCHEMA_BUNDLE_DIR=/path/to/schemas/").
 
 When the first validation request is executed the web application will look for $SCHEMA_BUNDLE_DIR/catalog.xml for XML
 Schema file locations.  Each time a validation request is received, the appropriate Schematron files are loaded based
-upon the top-level namespace of the file to validate:   $SCHEMA_BUNDLE_DIR/rule/$SCHEMA_VERSION/$MODEL_NAME.sch.  For
-example, a top-level namespace of "http://icao.int/iwxxm/2.0" would be checked against $SCHEMA_BUNDLE_DIR/rule/2.0/iwxxm.sch
+upon the top-level namespace of the file to validate:
+
+   $SCHEMA_BUNDLE_DIR/rule/$SCHEMA_VERSION/$MODEL_NAME.sch.
+
+For example, a top-level namespace of "http://icao.int/iwxxm/2.0" would be checked against $SCHEMA_BUNDLE_DIR/rule/2.0/iwxxm.sch
 if that file exists.
 
 # Web user interface
