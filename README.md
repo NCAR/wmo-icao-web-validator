@@ -12,7 +12,7 @@ This tool is a Java web application that can be run in any modern servlet contai
 must be deployed into the servlet container, but the deployment method is different for each container.  For Tomcat,
 the WAR file can be deployed by copying it into $CATALINA_HOME/webapps/ or by using the manager web user interface.
 
-Runnable WAR files may be found through the [releases](/releases) page or may be built off of the master as described below.
+Runnable WAR files may be found through the [releases](https://github.com/NCAR/wmo-icao-web-validator/releases) page or may be built off of the master as described below.
 
 # Web user interface
 Once the tool is running, the web user interface can be loaded at the root web location (for example: http://localhost:8080/).
