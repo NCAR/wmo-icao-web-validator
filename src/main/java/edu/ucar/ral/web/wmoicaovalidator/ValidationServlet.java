@@ -212,7 +212,8 @@ public class ValidationServlet extends HttpServlet {
    * @return
    */
   private String sanitizeJSONString( String str ){
-    return str.replace( "\"", "" ).replace( "<", "&lt;").replace( ">", "&gt" );  //remove double quotes
+    //remove double quotes, xml braces, and backslash
+    return str.replace( "\"", "" ).replace( "<", "&lt;").replace( ">", "&gt" ).replace("\\","&bsol");
   }
 
   private void initValidators() throws IOException {//search for the envvar
@@ -247,7 +248,7 @@ public class ValidationServlet extends HttpServlet {
         catalogFile = null;
       }
     }
-    xml10Validator = new XML10Validator( 0, catalogFile != null ? catalogFile.toString() : "" );
+    xml10Validator = new XML10Validator( catalogFile != null ? catalogFile.toString() : "" );
     schematronValidator = new SchematronValidator();
   }
 
